@@ -34,6 +34,48 @@ $app->post(
     ]
 );
 
+#REQUISITAR TOKEN
+$app->get(
+    'token/',
+    [
+        'middleware' => ['auth'],
+        'as', 'token.create',
+        'uses' => 'TokenController@create'
+    ]
+);
+$app->post(
+    'token/token',
+    [
+        'middleware' => ['auth'],
+        'as', 'token.create',
+        'uses' => 'TokenController@create'
+    ]
+);
+#validat token
+$app->get(
+    'token/validate',
+    [
+        'middleware' => ['auth'],
+        'as', 'token.validate',
+        'uses' => 'TokenController@validate'
+    ]
+);
+
+#teste
+$app->get(
+    'token/apptk',
+    [
+        'as', 'token.apptk',
+        //'uses' => 'TokenController@apptk'
+        function()
+        {
+            return json_encode(['tk'=> md5('conektta_mob'.date('Y').date('m').date("d").date("H").'123456789') ], JSON_UNESCAPED_UNICODE);
+        }
+    ]
+);
+
+
+
 #ENDERECO POR CEP
 /*
 $app->post(
