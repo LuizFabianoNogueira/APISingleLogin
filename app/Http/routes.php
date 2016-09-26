@@ -35,7 +35,7 @@ $app->post(
 );
 
 #REQUISITAR TOKEN
-$app->get(
+$app->post(
     'token/',
     [
         'middleware' => ['auth'],
@@ -52,12 +52,12 @@ $app->post(
     ]
 );
 #validat token
-$app->get(
+$app->post(
     'token/validate',
     [
         'middleware' => ['auth'],
         'as', 'token.validate',
-        'uses' => 'TokenController@validate'
+        'uses' => 'TokenController@tokenvalidate'
     ]
 );
 

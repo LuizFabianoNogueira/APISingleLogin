@@ -19,7 +19,6 @@ class CreateToken extends Migration
                 $table->integer('user_id');
                 $table->string('token');
                 $table->string('app_name');
-                $table->string('phone');
                 $table->dateTime('validated_at')->nullable();
                 $table->timestamps();
             });
